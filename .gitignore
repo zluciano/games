@@ -1,0 +1,15 @@
+# Godot cache
+.godot/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Exports
+*.export
+export_presets.cfg
+
+# Mono
+.mono/
+data_*/
+mono_crash.*.json
