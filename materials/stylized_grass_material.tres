@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+[ext_resource type="Shader" path="res://shaders/environment/stylized_grass.gdshader" id="1_grass_shader"]
+
+[resource]
+shader = ExtResource("1_grass_shader")
+shader_parameter/grass_color_light = Vector3(0.38, 0.6, 0.28)
+shader_parameter/grass_color_dark = Vector3(0.25, 0.48, 0.18)
+shader_parameter/grass_color_shadow = Vector3(0.12, 0.3, 0.08)
+shader_parameter/wind_strength = 0.15
+shader_parameter/wind_speed = 1.2
+shader_parameter/wind_direction = Vector2(1, 0.3)
+shader_parameter/shadow_threshold = 0.5
+shader_parameter/shadow_smoothness = 0.02
+shader_parameter/pattern_scale = 3.0
+shader_parameter/pattern_strength = 0.25
