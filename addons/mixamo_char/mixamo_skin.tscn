@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://mixamo_char_skin"]
+
+[ext_resource type="Script" path="res://addons/mixamo_char/mixamo_skin.gd" id="1_skin"]
+[ext_resource type="PackedScene" path="res://addons/mixamo_char/Player.dae" id="2_model"]
+
+[node name="MixamoSkin" type="Node3D"]
+script = ExtResource("1_skin")
+
+[node name="Player" parent="." instance=ExtResource("2_model")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
