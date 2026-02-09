@@ -1,0 +1,65 @@
+{
+	"bu_jdi": {
+		"name": "Jaden Yuki",
+		"bustup_folder": "bu_jdi",
+		"sla_sprite": "sd_judai_sla.png",
+		"eye_offset": [16, 40],
+		"mouth_offset": [16, 68],
+		"expression_count": 21,
+		"mouth_count": 27
+	},
+	"bu_sho": {
+		"name": "Syrus Truesdale",
+		"bustup_folder": "bu_sho",
+		"sla_sprite": "sd_sho_sla.png",
+		"eye_offset": [16, 42],
+		"mouth_offset": [16, 70],
+		"expression_count": 15,
+		"mouth_count": 20
+	},
+	"bu_ask": {
+		"name": "Alexis Rhodes",
+		"bustup_folder": "bu_ask",
+		"sla_sprite": "sd_asuka_sla.png",
+		"eye_offset": [16, 38],
+		"mouth_offset": [16, 66],
+		"expression_count": 15,
+		"mouth_count": 20
+	},
+	"bu_jun": {
+		"name": "Chazz Princeton",
+		"bustup_folder": "bu_jun",
+		"sla_sprite": "sd_junko_sla.png",
+		"eye_offset": [16, 40],
+		"mouth_offset": [16, 68],
+		"expression_count": 15,
+		"mouth_count": 20
+	},
+	"bu_dai": {
+		"name": "Bastion Misawa",
+		"bustup_folder": "bu_dai",
+		"sla_sprite": "sd_daito_sla.png",
+		"eye_offset": [16, 40],
+		"mouth_offset": [16, 68],
+		"expression_count": 15,
+		"mouth_count": 20
+	},
+	"bu_boy": {
+		"name": "Player",
+		"bustup_folder": "bu_boy",
+		"sla_sprite": "sd_boy_sla.png",
+		"eye_offset": [16, 40],
+		"mouth_offset": [16, 68],
+		"expression_count": 10,
+		"mouth_count": 15
+	},
+	"bu_hyt": {
+		"name": "Chumley Huffington",
+		"bustup_folder": "bu_hyt",
+		"sla_sprite": "",
+		"eye_offset": [16, 40],
+		"mouth_offset": [16, 68],
+		"expression_count": 10,
+		"mouth_count": 15
+	}
+}

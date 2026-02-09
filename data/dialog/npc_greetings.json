@@ -1,0 +1,69 @@
+{
+	"bu_jdi": [
+		{
+			"speaker": "bu_jdi",
+			"expression": 0,
+			"text": "Hey! Ready for a duel? I've been working on my deck all morning!"
+		},
+		{
+			"speaker": "bu_jdi",
+			"expression": 2,
+			"text": "My Elemental Heroes are getting stronger every day. I can feel it!"
+		}
+	],
+	"bu_sho": [
+		{
+			"speaker": "bu_sho",
+			"expression": 0,
+			"text": "Oh, hi there! Have you seen big bro Jaden around?"
+		},
+		{
+			"speaker": "bu_sho",
+			"expression": 1,
+			"text": "I'm still practicing with my Vehicroids. They're pretty cool, right?"
+		}
+	],
+	"bu_ask": [
+		{
+			"speaker": "bu_ask",
+			"expression": 0,
+			"text": "The academy grounds are lovely at this time of day, don't you think?"
+		},
+		{
+			"speaker": "bu_ask",
+			"expression": 1,
+			"text": "If you're looking for a challenge, I won't go easy on you."
+		}
+	],
+	"bu_jun": [
+		{
+			"speaker": "bu_jun",
+			"expression": 0,
+			"text": "Hmph. Don't get in my way. I'm The Chazz, after all."
+		},
+		{
+			"speaker": "bu_jun",
+			"expression": 2,
+			"text": "Chazz it up! Nobody can beat my Armed Dragon deck!"
+		}
+	],
+	"bu_dai": [
+		{
+			"speaker": "bu_dai",
+			"expression": 0,
+			"text": "I've been analyzing the latest duel statistics. Fascinating data."
+		},
+		{
+			"speaker": "bu_dai",
+			"expression": 1,
+			"text": "With the right calculations, any duel can be won. It's all about probability."
+		}
+	],
+	"bu_hyt": [
+		{
+			"speaker": "bu_hyt",
+			"expression": 0,
+			"text": "Man, I'm starving... When's dinner?"
+		}
+	]
+}

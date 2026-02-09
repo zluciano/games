@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://src/maps/location_scene.gd" id="scene_script"]
+[ext_resource type="Script" path="res://src/characters/player_controller.gd" id="player_script"]
+[ext_resource type="Script" path="res://src/characters/overworld_character.gd" id="char_script"]
+[ext_resource type="Script" path="res://src/maps/location_exit.gd" id="exit_script"]
+
+[sub_resource type="CircleShape2D" id="player_shape"]
+radius = 24.0
+
+[sub_resource type="RectangleShape2D" id="exit_shape"]
+size = Vector2(480, 20)
+
+[node name="BG_22_01" type="Node2D"]
+script = ExtResource("scene_script")
+map_id = "BG_22_01"
+display_name = "Dorm Room (Slifer)"
+is_interior = true
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 480
+offset_bottom = 272
+color = Color(0.25, 0.18, 0.12, 1)
+
+[node name="Player" type="Node2D" parent="." groups=["player"]]
+position = Vector2(240, 180)
+script = ExtResource("player_script")
+
+[node name="OverworldCharacter" type="Node2D" parent="Player"]
+script = ExtResource("char_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/OverworldCharacter"]
+hframes = 8
+vframes = 4
+
+[node name="AnimTimer" type="Timer" parent="Player/OverworldCharacter"]
+wait_time = 0.12
+
+[node name="InteractionArea" type="Area2D" parent="Player"]
+collision_layer = 2
+collision_mask = 4
+
+[node name="Shape" type="CollisionShape2D" parent="Player/InteractionArea"]
+shape = SubResource("player_shape")
+
+[node name="Exit_BG_03_01" type="Area2D" parent="."]
+position = Vector2(240, 265)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("exit_script")
+target_map_id = "BG_03_01"
+target_spawn_point = "from_dorm"
+
+[node name="Shape" type="CollisionShape2D" parent="Exit_BG_03_01"]
+shape = SubResource("exit_shape")
+
+[node name="Label" type="Label" parent="Exit_BG_03_01"]
+offset_left = -30
+offset_top = -18
+offset_right = 30
+offset_bottom = 0
+text = "Exit"
+horizontal_alignment = 1
+add_theme_font_size_override/font_size = 10
+modulate = Color(1, 1, 0.6, 0.6)
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="LocationLabel" type="Label" parent="UI"]
+offset_left = 10
+offset_top = 10
+offset_right = 300
+offset_bottom = 30
+text = "Dorm Room (Slifer)"
+add_theme_font_size_override/font_size = 14

@@ -1,0 +1,142 @@
+{
+	"BG_01_01": {
+		"name": "Academy Courtyard",
+		"is_interior": false,
+		"connections": ["BG_01_02", "BG_02_01", "BG_03_01"]
+	},
+	"BG_01_02": {
+		"name": "Academy Entrance",
+		"is_interior": false,
+		"connections": ["BG_01_01", "BG_09_01"]
+	},
+	"BG_02_01": {
+		"name": "Academy Hallway 1F",
+		"is_interior": true,
+		"connections": ["BG_01_01", "BG_02_02", "BG_02_03", "BG_02_04"]
+	},
+	"BG_02_02": {
+		"name": "Academy Hallway 2F",
+		"is_interior": true,
+		"connections": ["BG_02_01", "BG_02_05", "BG_02_06"]
+	},
+	"BG_02_03": {
+		"name": "Classroom",
+		"is_interior": true,
+		"connections": ["BG_02_01"]
+	},
+	"BG_02_04": {
+		"name": "Card Shop",
+		"is_interior": true,
+		"connections": ["BG_02_01"]
+	},
+	"BG_02_05": {
+		"name": "Library",
+		"is_interior": true,
+		"connections": ["BG_02_02"]
+	},
+	"BG_02_06": {
+		"name": "Staff Room",
+		"is_interior": true,
+		"connections": ["BG_02_02"]
+	},
+	"BG_02_07": {
+		"name": "Chancellor's Office",
+		"is_interior": true,
+		"connections": ["BG_02_02"]
+	},
+	"BG_02_08": {
+		"name": "Duel Arena",
+		"is_interior": true,
+		"connections": ["BG_02_01"]
+	},
+	"BG_03_01": {
+		"name": "Slifer Red Dorm",
+		"is_interior": false,
+		"connections": ["BG_01_01", "BG_04_01"]
+	},
+	"BG_04_01": {
+		"name": "Ra Yellow Dorm",
+		"is_interior": false,
+		"connections": ["BG_03_01", "BG_05_01"]
+	},
+	"BG_05_01": {
+		"name": "Obelisk Blue Boys' Dorm",
+		"is_interior": false,
+		"connections": ["BG_04_01", "BG_06_01"]
+	},
+	"BG_06_01": {
+		"name": "Obelisk Blue Girls' Dorm",
+		"is_interior": false,
+		"connections": ["BG_05_01"]
+	},
+	"BG_07_01": {
+		"name": "Harbor",
+		"is_interior": false,
+		"connections": ["BG_01_01"]
+	},
+	"BG_08_01": {
+		"name": "Lighthouse",
+		"is_interior": false,
+		"connections": ["BG_07_01"]
+	},
+	"BG_09_01": {
+		"name": "Forest Path",
+		"is_interior": false,
+		"connections": ["BG_01_02", "BG_10_01", "BG_11_01"]
+	},
+	"BG_10_01": {
+		"name": "Abandoned Dorm",
+		"is_interior": false,
+		"connections": ["BG_09_01"]
+	},
+	"BG_11_01": {
+		"name": "Volcano",
+		"is_interior": false,
+		"connections": ["BG_09_01"]
+	},
+	"BG_14_01": {
+		"name": "Beach",
+		"is_interior": false,
+		"connections": ["BG_01_01"]
+	},
+	"BG_15_01": {
+		"name": "Hot Spring",
+		"is_interior": false,
+		"connections": ["BG_14_01"]
+	},
+	"BG_16_01": {
+		"name": "Cliff",
+		"is_interior": false,
+		"connections": ["BG_09_01"]
+	},
+	"BG_18_01": {
+		"name": "Cave",
+		"is_interior": true,
+		"connections": ["BG_11_01"]
+	},
+	"BG_19_01": {
+		"name": "Lake",
+		"is_interior": false,
+		"connections": ["BG_09_01"]
+	},
+	"BG_20_01": {
+		"name": "Bridge",
+		"is_interior": false,
+		"connections": ["BG_01_01", "BG_09_01"]
+	},
+	"BG_21_01": {
+		"name": "Academy Rooftop",
+		"is_interior": false,
+		"connections": ["BG_02_02"]
+	},
+	"BG_22_01": {
+		"name": "Dorm Room (Slifer)",
+		"is_interior": true,
+		"connections": ["BG_03_01"]
+	},
+	"BG_22_02": {
+		"name": "Dorm Room (Obelisk)",
+		"is_interior": true,
+		"connections": ["BG_05_01"]
+	}
+}

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/characters/overworld_character.gd" id="script"]
+
+[node name="OverworldCharacter" type="Node2D"]
+script = ExtResource("script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+hframes = 8
+vframes = 4
+
+[node name="AnimTimer" type="Timer" parent="."]
+wait_time = 0.12

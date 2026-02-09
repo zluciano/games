@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/ui/main_menu.gd" id="script"]
+[ext_resource type="Texture2D" path="res://assets/tagforce/ui/menu/en/main_title00003.png" id="bg"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("bg")
+expand_mode = 1
+stretch_mode = 6
+modulate = Color(0.3, 0.3, 0.4, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 140
+offset_top = 30
+offset_right = 340
+offset_bottom = 55
+text = "TAG FORCE EVOLUTION"
+horizontal_alignment = 1
+add_theme_font_size_override/font_size = 16
+
+[node name="ItemContainer" type="VBoxContainer" parent="." unique_name_in_owner=true]
+layout_mode = 0
+offset_left = 140
+offset_top = 90
+offset_right = 340
+offset_bottom = 200
+theme_override_constants/separation = 8
+
+[node name="Cursor" type="TextureRect" parent="." unique_name_in_owner=true]
+layout_mode = 0
+offset_left = 120
+offset_top = 90
+offset_right = 136
+offset_bottom = 106

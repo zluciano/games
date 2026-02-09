@@ -1,0 +1,29 @@
+{
+	"BG_01_01": {
+		"day": [
+			{"id": "bu_jdi", "position": [300, 150], "direction": 0},
+			{"id": "bu_sho", "position": [180, 120], "direction": 2}
+		],
+		"sunset": [
+			{"id": "bu_ask", "position": [250, 160], "direction": 1}
+		],
+		"night": []
+	},
+	"BG_03_01": {
+		"day": [
+			{"id": "bu_sho", "position": [350, 140], "direction": 1}
+		],
+		"sunset": [
+			{"id": "bu_jdi", "position": [300, 180], "direction": 0},
+			{"id": "bu_sho", "position": [200, 130], "direction": 2}
+		],
+		"night": [
+			{"id": "bu_hyt", "position": [280, 160], "direction": 0}
+		]
+	},
+	"BG_22_01": {
+		"day": [],
+		"sunset": [],
+		"night": []
+	}
+}
