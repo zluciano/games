@@ -39,6 +39,7 @@ func goto_scene(path: String, transition: String = "fade", duration: float = 0.4
 
 	# Switch scene
 	get_tree().change_scene_to_file(path)
+	await get_tree().tree_changed
 	await get_tree().process_frame
 	current_scene = get_tree().current_scene
 
@@ -63,11 +64,12 @@ func goto_location(map_id: String, spawn_point: String = "default") -> void:
 	await _fade_out(0.4)
 
 	get_tree().change_scene_to_file(path)
+	await get_tree().tree_changed
 	await get_tree().process_frame
 	current_scene = get_tree().current_scene
 
 	# Tell the location where to spawn the player
-	if current_scene.has_method("set_spawn_point"):
+	if current_scene and current_scene.has_method("set_spawn_point"):
 		current_scene.set_spawn_point(spawn_point)
 
 	GameManager.game_data["location"] = map_id

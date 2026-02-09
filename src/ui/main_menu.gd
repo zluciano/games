@@ -6,8 +6,8 @@ const MENU_ITEMS := ["New Game", "Continue", "Options"]
 var selected_index: int = 0
 var _can_input: bool = false
 
-@onready var item_container: VBoxContainer = %ItemContainer
-@onready var cursor: TextureRect = %Cursor
+@onready var item_container: VBoxContainer = $ItemContainer
+@onready var cursor: Label = $Cursor
 
 
 func _ready() -> void:

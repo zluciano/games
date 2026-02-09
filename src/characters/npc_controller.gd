@@ -2,7 +2,7 @@ extends Node2D
 ## NPC controller - idle/patrol behavior with dialog interaction.
 
 @export var character_id: String = ""
-@export var idle_direction: int = 0  # 0=down, 1=left, 2=right, 3=up
+@export var idle_direction: int = 0  # 0=down, 1=up, 2=left, 3=right
 @export var patrol_points: Array[Vector2] = []
 @export var patrol_speed: float = 30.0
 
@@ -96,12 +96,7 @@ func _load_dialog() -> void:
 
 
 func _find_dialog_box() -> Node:
-	# Look for dialog box in the scene
 	var boxes := get_tree().get_nodes_in_group("dialog_box")
 	if not boxes.is_empty():
 		return boxes[0]
-	# Try finding by class
-	for node in get_tree().get_nodes_in_group(""):
-		if node.has_method("start_dialog"):
-			return node
 	return null

@@ -1,12 +1,12 @@
 extends Node2D
 ## Overworld character using SLA spritesheet (512x256, 8 cols x 4 rows, 64x64 frames).
-## Row 0: walk down, Row 1: walk left, Row 2: walk right, Row 3: walk up
+## Row 0: walk down, Row 1: walk up, Row 2: walk left, Row 3: walk right
 
 @export var sprite_path: String = ""
 @export var character_id: String = ""
 @export var walk_speed: float = 60.0
 
-enum Direction { DOWN = 0, LEFT = 1, RIGHT = 2, UP = 3 }
+enum Direction { DOWN = 0, UP = 1, LEFT = 2, RIGHT = 3 }
 
 var current_direction: int = Direction.DOWN
 var is_moving: bool = false

@@ -29,7 +29,7 @@
 	"bu_jun": {
 		"name": "Chazz Princeton",
 		"bustup_folder": "bu_jun",
-		"sla_sprite": "sd_junko_sla.png",
+		"sla_sprite": "sd_mjm_b_sla.png",
 		"eye_offset": [16, 40],
 		"mouth_offset": [16, 68],
 		"expression_count": 15,
@@ -38,7 +38,7 @@
 	"bu_dai": {
 		"name": "Bastion Misawa",
 		"bustup_folder": "bu_dai",
-		"sla_sprite": "sd_daito_sla.png",
+		"sla_sprite": "sd_misaw_sla.png",
 		"eye_offset": [16, 40],
 		"mouth_offset": [16, 68],
 		"expression_count": 15,
@@ -56,7 +56,7 @@
 	"bu_hyt": {
 		"name": "Chumley Huffington",
 		"bustup_folder": "bu_hyt",
-		"sla_sprite": "",
+		"sla_sprite": "sd_hayat_sla.png",
 		"eye_offset": [16, 40],
 		"mouth_offset": [16, 68],
 		"expression_count": 10,

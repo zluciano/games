@@ -5,13 +5,13 @@
 			{"id": "bu_sho", "position": [180, 120], "direction": 2}
 		],
 		"sunset": [
-			{"id": "bu_ask", "position": [250, 160], "direction": 1}
+			{"id": "bu_ask", "position": [250, 160], "direction": 0}
 		],
 		"night": []
 	},
 	"BG_03_01": {
 		"day": [
-			{"id": "bu_sho", "position": [350, 140], "direction": 1}
+			{"id": "bu_sho", "position": [350, 140], "direction": 0}
 		],
 		"sunset": [
 			{"id": "bu_jdi", "position": [300, 180], "direction": 0},

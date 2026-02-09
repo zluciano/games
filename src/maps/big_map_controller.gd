@@ -11,10 +11,10 @@ var _location_ids: Array = []
 var _current_index: int = 0
 var _can_input: bool = false
 
-@onready var island_texture: TextureRect = %IslandTexture
-@onready var cursor_sprite: Node2D = %CursorSprite
-@onready var location_label: Label = %LocationLabel
-@onready var time_label: Label = %TimeLabel
+@onready var island_texture: TextureRect = $IslandTexture
+@onready var cursor_sprite: Node2D = $CursorSprite
+@onready var location_label: Label = $InfoPanel/HBox/LocationLabel
+@onready var time_label: Label = $InfoPanel/HBox/TimeLabel
 
 
 func _ready() -> void:
@@ -63,7 +63,7 @@ func _load_data() -> void:
 
 func _update_island_texture() -> void:
 	var folder := TimeManager.get_big_map_folder()
-	var path := BIG_MAP_BASE + folder + "/bm_island_1.png"
+	var path := BIG_MAP_BASE + folder + "/bm_island_full.png"
 	if ResourceLoader.exists(path):
 		island_texture.texture = load(path)
 

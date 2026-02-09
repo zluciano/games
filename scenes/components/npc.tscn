@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/characters/npc_controller.gd" id="npc_script"]
+[ext_resource type="Script" path="res://src/characters/overworld_character.gd" id="char_script"]
+
+[sub_resource type="CircleShape2D" id="interact_shape"]
+radius = 28.0
+
+[node name="NPC" type="Node2D"]
+script = ExtResource("npc_script")
+
+[node name="OverworldCharacter" type="Node2D" parent="."]
+script = ExtResource("char_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="OverworldCharacter"]
+hframes = 8
+vframes = 4
+
+[node name="AnimTimer" type="Timer" parent="OverworldCharacter"]
+wait_time = 0.12
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("interact_shape")

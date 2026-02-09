@@ -1,7 +1,7 @@
 extends Control
 ## Title screen - assembled from main_title textures with "PRESS START" blink.
 
-@onready var press_start: TextureRect = %PressStart
+@onready var press_start: TextureRect = $PressStart
 
 var _can_proceed: bool = false
 var _blink_tween: Tween
@@ -31,5 +31,6 @@ func _input(event: InputEvent) -> void:
 		_can_proceed = false
 		if _blink_tween:
 			_blink_tween.kill()
-		press_start.modulate.a = 1.0
+		if press_start:
+			press_start.modulate.a = 1.0
 		SceneManager.goto_scene("res://scenes/main_menu/main_menu.tscn")
