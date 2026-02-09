@@ -1,9 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3]
-
-[ext_resource type="Shader" path="res://shaders/grass_ground.gdshader" id="1_shader"]
-
-[resource]
-shader = ExtResource("1_shader")
-shader_parameter/base_color = Color(0.486, 0.702, 0.259, 1)
-shader_parameter/shadow_color = Color(0.306, 0.478, 0.157, 1)
-shader_parameter/light_direction = Vector3(0.5, 0.7, 0.3)
