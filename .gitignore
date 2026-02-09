@@ -19,6 +19,3 @@ mono_crash.*.json
 
 # Raw extracted assets (from PS2 ISO)
 assets/extracted/
-
-# Converted assets (regenerable via tools/extraction/extract_all.py)
-assets/tagforce/
