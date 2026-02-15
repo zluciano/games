@@ -2,7 +2,7 @@ extends Node2D
 ## NPC controller - idle/patrol behavior with dialog interaction.
 
 @export var character_id: String = ""
-@export var idle_direction: int = 0  # 0=down, 1=up, 2=left, 3=right
+@export var idle_direction: int = 0  # Direction enum: 0=S, 1=SW, 2=W, 3=NW, 4=N, 5=NE, 6=E, 7=SE
 @export var patrol_points: Array[Vector2] = []
 @export var patrol_speed: float = 30.0
 
@@ -47,11 +47,9 @@ func _physics_process(delta: float) -> void:
 	var direction := delta_pos.normalized()
 	position += direction * patrol_speed * delta
 
-	# Update sprite direction
-	if abs(direction.x) > abs(direction.y):
-		character.walk(character.Direction.RIGHT if direction.x > 0 else character.Direction.LEFT)
-	else:
-		character.walk(character.Direction.DOWN if direction.y > 0 else character.Direction.UP)
+	# Update sprite direction (8-way)
+	var dir := character._vector_to_direction(direction)
+	character.walk(dir)
 
 
 func interact(player: Node2D) -> void:

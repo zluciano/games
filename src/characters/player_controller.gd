@@ -17,7 +17,7 @@ var _map_bounds: Rect2 = Rect2(0, 0, 1440, 816)
 
 func _ready() -> void:
 	character.load_sprite(DEFAULT_SPRITE)
-	character.idle(character.Direction.DOWN)
+	character.idle(character.Direction.S)
 
 	interaction_area.area_entered.connect(_on_npc_entered)
 	interaction_area.area_exited.connect(_on_npc_exited)
@@ -55,11 +55,9 @@ func _physics_process(delta: float) -> void:
 		input = input.normalized()
 		position += input * speed * delta
 
-		# Determine facing direction
-		if abs(input.x) > abs(input.y):
-			character.walk(character.Direction.RIGHT if input.x > 0 else character.Direction.LEFT)
-		else:
-			character.walk(character.Direction.DOWN if input.y > 0 else character.Direction.UP)
+		# Determine 8-way facing direction from raw input axes
+		var dir := character._vector_to_direction(input)
+		character.walk(dir)
 
 		# Clamp to map bounds (with margin for sprite)
 		var margin := 16.0
