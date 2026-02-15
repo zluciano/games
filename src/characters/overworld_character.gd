@@ -15,7 +15,8 @@ const SHADOW_RADIUS := Vector2(12.0, 6.0)
 const FRAME_W := 51
 const FRAME_H := 85
 const ROW_Y := [0, 85, 170]
-const FRAME_COUNT := 10
+const FRAME_COUNT_FRONT := 10
+const FRAME_COUNT_SIDE := 8
 
 var current_direction: int = Direction.DOWN
 var is_moving: bool = false
@@ -57,6 +58,9 @@ func load_sprite(path: String) -> void:
 func walk(direction: int) -> void:
 	current_direction = direction
 	is_moving = true
+	var max_frames := FRAME_COUNT_SIDE if direction >= Direction.LEFT else FRAME_COUNT_FRONT
+	if _frame >= max_frames:
+		_frame = 0
 	_update_frame()
 	if anim_timer.is_stopped():
 		anim_timer.start()
@@ -82,7 +86,8 @@ func face_towards(target_pos: Vector2) -> void:
 func _advance_frame() -> void:
 	if not is_moving:
 		return
-	_frame = (_frame + 1) % FRAME_COUNT
+	var max_frames := FRAME_COUNT_SIDE if current_direction >= Direction.LEFT else FRAME_COUNT_FRONT
+	_frame = (_frame + 1) % max_frames
 	_update_frame()
 
 
@@ -97,10 +102,10 @@ func _update_frame() -> void:
 			sprite.flip_h = false
 		Direction.LEFT:
 			row = 2
-			sprite.flip_h = false
+			sprite.flip_h = true
 		Direction.RIGHT:
 			row = 2
-			sprite.flip_h = true
+			sprite.flip_h = false
 		_:
 			row = 0
 			sprite.flip_h = false
