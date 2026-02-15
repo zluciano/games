@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void:
 		position += input * speed * delta
 
 		# Determine 8-way facing direction from raw input axes
-		var dir := character._vector_to_direction(input)
+		var dir: int = character._vector_to_direction(input)
 		character.walk(dir)
 
 		# Clamp to map bounds (with margin for sprite)

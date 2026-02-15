@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	position += direction * patrol_speed * delta
 
 	# Update sprite direction (8-way)
-	var dir := character._vector_to_direction(direction)
+	var dir: int = character._vector_to_direction(direction)
 	character.walk(dir)
 
 

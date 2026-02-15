@@ -94,7 +94,7 @@ func idle(direction: int = -1) -> void:
 
 func face_towards(target_pos: Vector2) -> void:
 	var delta := target_pos - global_position
-	var dir := _vector_to_direction(delta)
+	var dir: int = _vector_to_direction(delta)
 	idle(dir)
 
 
