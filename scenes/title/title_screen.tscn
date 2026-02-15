@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://src/ui/title_screen.gd" id="script"]
 [ext_resource type="Texture2D" path="res://assets/tagforce/ui/menu/en/main_title00003.png" id="bg"]
@@ -32,10 +32,10 @@ stretch_mode = 5
 
 [node name="PressStart" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 112
-offset_top = 218
-offset_right = 368
-offset_bottom = 250
+offset_left = 280
+offset_top = 545
+offset_right = 920
+offset_bottom = 625
 texture = ExtResource("press_start")
 expand_mode = 1
 stretch_mode = 5

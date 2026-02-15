@@ -1,15 +1,18 @@
 extends Node2D
 ## Player controller - input-driven movement using overworld character sprite.
+## Camera2D child follows the player and shows a 640x480 window into the map.
 
-const DEFAULT_SPRITE := "res://assets/tagforce/characters/sprites_sla/sd_boy_sla.png"
+const DEFAULT_SPRITE := "res://assets/tagforce/characters/sprites_sla/sd_play_sla.png"
 
-@export var speed: float = 60.0
+@export var speed: float = 180.0
 
 var _can_move: bool = true
 var _nearby_npcs: Array = []
+var _map_bounds: Rect2 = Rect2(0, 0, 1440, 816)
 
 @onready var character: Node2D = $OverworldCharacter
 @onready var interaction_area: Area2D = $InteractionArea
+@onready var camera: Camera2D = $Camera2D
 
 
 func _ready() -> void:
@@ -18,6 +21,20 @@ func _ready() -> void:
 
 	interaction_area.area_entered.connect(_on_npc_entered)
 	interaction_area.area_exited.connect(_on_npc_exited)
+
+	# Camera2D setup: show native 640x480 window
+	camera.enabled = true
+	camera.position_smoothing_enabled = true
+	camera.position_smoothing_speed = 8.0
+
+
+func set_map_bounds(bounds: Rect2) -> void:
+	_map_bounds = bounds
+	# Set camera limits so it doesn't show beyond the map background
+	camera.limit_left = int(bounds.position.x)
+	camera.limit_top = int(bounds.position.y)
+	camera.limit_right = int(bounds.end.x)
+	camera.limit_bottom = int(bounds.end.y)
 
 
 func _physics_process(delta: float) -> void:
@@ -44,9 +61,10 @@ func _physics_process(delta: float) -> void:
 		else:
 			character.walk(character.Direction.DOWN if input.y > 0 else character.Direction.UP)
 
-		# Clamp to viewport
-		position.x = clampf(position.x, 16, 464)
-		position.y = clampf(position.y, 16, 256)
+		# Clamp to map bounds (with margin for sprite)
+		var margin := 16.0
+		position.x = clampf(position.x, _map_bounds.position.x + margin, _map_bounds.end.x - margin)
+		position.y = clampf(position.y, _map_bounds.position.y + margin, _map_bounds.end.y - margin)
 	else:
 		character.idle()
 

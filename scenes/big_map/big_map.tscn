@@ -28,18 +28,18 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="CursorSprite" type="Node2D" parent="."]
-position = Vector2(240, 120)
+position = Vector2(598, 302)
 
 [node name="Dot" type="Sprite2D" parent="CursorSprite"]
 texture = ExtResource("cursor_tex")
-scale = Vector2(1.5, 1.5)
+scale = Vector2(3.75, 3.75)
 
 [node name="InfoPanel" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_left = 10
-offset_top = 242
-offset_right = 470
-offset_bottom = 268
+offset_left = 25
+offset_top = 605
+offset_right = 1170
+offset_bottom = 670
 
 [node name="HBox" type="HBoxContainer" parent="InfoPanel"]
 layout_mode = 2
@@ -48,10 +48,10 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Academy Courtyard"
-add_theme_font_size_override/font_size = 12
+add_theme_font_size_override/font_size = 30
 
 [node name="TimeLabel" type="Label" parent="InfoPanel/HBox"]
 layout_mode = 2
 horizontal_alignment = 2
 text = "Day - Day 1"
-add_theme_font_size_override/font_size = 12
+add_theme_font_size_override/font_size = 30

@@ -1,24 +1,21 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://src/maps/location_scene.gd" id="scene_script"]
 [ext_resource type="Script" path="res://src/characters/player_controller.gd" id="player_script"]
 [ext_resource type="Script" path="res://src/characters/overworld_character.gd" id="char_script"]
 [ext_resource type="Script" path="res://src/maps/location_exit.gd" id="exit_script"]
-[ext_resource type="Texture2D" path="res://assets/tagforce/backgrounds/maps_rendered/bg_03_01_bg.png" id="bg_texture"]
+[ext_resource type="Texture2D" path="res://assets/tagforce/backgrounds/maps_rendered/bg_01_02_bg.png" id="bg_texture"]
 
 [sub_resource type="CircleShape2D" id="player_shape"]
 radius = 24.0
 
 [sub_resource type="RectangleShape2D" id="exit_shape_v"]
-size = Vector2(50, 685)
+size = Vector2(50, 1467)
 
-[sub_resource type="RectangleShape2D" id="exit_shape_h"]
-size = Vector2(1042, 50)
-
-[node name="BG_03_01" type="Node2D"]
+[node name="BG_01_02" type="Node2D"]
 script = ExtResource("scene_script")
-map_id = "BG_03_01"
-display_name = "Slifer Red Dorm"
+map_id = "BG_01_02"
+display_name = "Academy Entrance"
 is_interior = false
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -26,7 +23,7 @@ centered = false
 texture = ExtResource("bg_texture")
 
 [node name="Player" type="Node2D" parent="." groups=["player"]]
-position = Vector2(521, 392)
+position = Vector2(1131, 783)
 script = ExtResource("player_script")
 
 [node name="OverworldCharacter" type="Node2D" parent="Player"]
@@ -47,72 +44,48 @@ collision_mask = 4
 shape = SubResource("player_shape")
 
 [node name="Exit_BG_01_01" type="Area2D" parent="."]
-position = Vector2(25, 392)
+position = Vector2(2238, 783)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("exit_script")
 target_map_id = "BG_01_01"
-target_spawn_point = "from_slifer"
+target_spawn_point = "from_entrance"
 
 [node name="Shape" type="CollisionShape2D" parent="Exit_BG_01_01"]
 shape = SubResource("exit_shape_v")
 
 [node name="Label" type="Label" parent="Exit_BG_01_01"]
-offset_left = 25
-offset_top = -20
-offset_right = 300
-offset_bottom = 20
-text = "Courtyard"
-add_theme_font_size_override/font_size = 14
-modulate = Color(1, 1, 0.6, 0.6)
-
-[node name="Exit_BG_04_01" type="Area2D" parent="."]
-position = Vector2(1017, 392)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("exit_script")
-target_map_id = "BG_04_01"
-target_spawn_point = "from_slifer"
-
-[node name="Shape" type="CollisionShape2D" parent="Exit_BG_04_01"]
-shape = SubResource("exit_shape_v")
-
-[node name="Label" type="Label" parent="Exit_BG_04_01"]
 offset_left = -250
 offset_top = -20
 offset_right = -25
 offset_bottom = 20
-text = "Ra Yellow"
+text = "Courtyard"
 horizontal_alignment = 2
 add_theme_font_size_override/font_size = 14
 modulate = Color(1, 1, 0.6, 0.6)
 
-[node name="Exit_BG_22_01" type="Area2D" parent="."]
-position = Vector2(521, 25)
+[node name="Exit_BG_09_01" type="Area2D" parent="."]
+position = Vector2(25, 783)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("exit_script")
-target_map_id = "BG_22_01"
-target_spawn_point = "from_slifer"
+target_map_id = "BG_09_01"
+target_spawn_point = "from_entrance"
 
-[node name="Shape" type="CollisionShape2D" parent="Exit_BG_22_01"]
-shape = SubResource("exit_shape_h")
+[node name="Shape" type="CollisionShape2D" parent="Exit_BG_09_01"]
+shape = SubResource("exit_shape_v")
 
-[node name="Label" type="Label" parent="Exit_BG_22_01"]
-offset_left = -125
-offset_top = 25
-offset_right = 125
-offset_bottom = 65
-text = "Dorm Room"
-horizontal_alignment = 1
+[node name="Label" type="Label" parent="Exit_BG_09_01"]
+offset_left = 25
+offset_top = -20
+offset_right = 300
+offset_bottom = 20
+text = "Forest"
 add_theme_font_size_override/font_size = 14
 modulate = Color(1, 1, 0.6, 0.6)
 
 [node name="from_courtyard" type="Marker2D" parent="."]
-position = Vector2(60, 392)
+position = Vector2(2203, 783)
 
-[node name="from_dorm_slifer" type="Marker2D" parent="."]
-position = Vector2(521, 60)
-
-[node name="from_ra_yellow" type="Marker2D" parent="."]
-position = Vector2(982, 392)
+[node name="from_forest" type="Marker2D" parent="."]
+position = Vector2(60, 783)

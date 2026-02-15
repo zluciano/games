@@ -60,7 +60,8 @@ func _show_line(line: Dictionary) -> void:
 
 
 func _on_text_finished() -> void:
-	portrait.stop_talking()
+	if portrait.visible:
+		portrait.stop_talking()
 	_waiting_for_input = true
 	continue_indicator.visible = true
 
@@ -89,6 +90,8 @@ func _close() -> void:
 	_is_active = false
 	panel.visible = false
 	dim_bg.visible = false
-	portrait.stop_talking()
+	if portrait.visible:
+		portrait.stop_talking()
+	portrait.visible = false
 	_lines.clear()
 	dialog_finished.emit()

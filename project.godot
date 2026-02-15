@@ -29,10 +29,10 @@ InputManager="*res://src/autoloads/input_manager.gd"
 
 [display]
 
-window/size/viewport_width=480
-window/size/viewport_height=272
-window/size/window_width_override=960
-window/size/window_height_override=544
+window/size/viewport_width=640
+window/size/viewport_height=480
+window/size/window_width_override=1280
+window/size/window_height_override=960
 window/stretch/mode="viewport"
 
 [input]

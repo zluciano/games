@@ -6,8 +6,6 @@
 script = ExtResource("script")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-hframes = 8
-vframes = 4
 
 [node name="AnimTimer" type="Timer" parent="."]
 wait_time = 0.12

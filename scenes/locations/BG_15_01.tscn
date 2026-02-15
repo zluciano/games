@@ -4,26 +4,26 @@
 [ext_resource type="Script" path="res://src/characters/player_controller.gd" id="player_script"]
 [ext_resource type="Script" path="res://src/characters/overworld_character.gd" id="char_script"]
 [ext_resource type="Script" path="res://src/maps/location_exit.gd" id="exit_script"]
-[ext_resource type="Texture2D" path="res://assets/tagforce/backgrounds/maps_rendered/bg_22_01_bg.png" id="bg_texture"]
+[ext_resource type="Texture2D" path="res://assets/tagforce/backgrounds/maps_rendered/bg_15_01_bg.png" id="bg_texture"]
 
 [sub_resource type="CircleShape2D" id="player_shape"]
 radius = 24.0
 
-[sub_resource type="RectangleShape2D" id="exit_shape_h"]
-size = Vector2(1638, 50)
+[sub_resource type="RectangleShape2D" id="exit_shape_v"]
+size = Vector2(50, 380)
 
-[node name="BG_22_01" type="Node2D"]
+[node name="BG_15_01" type="Node2D"]
 script = ExtResource("scene_script")
-map_id = "BG_22_01"
-display_name = "Dorm Room (Slifer)"
-is_interior = true
+map_id = "BG_15_01"
+display_name = "Hot Spring"
+is_interior = false
 
 [node name="Background" type="Sprite2D" parent="."]
 centered = false
 texture = ExtResource("bg_texture")
 
 [node name="Player" type="Node2D" parent="." groups=["player"]]
-position = Vector2(819, 721)
+position = Vector2(320, 240)
 script = ExtResource("player_script")
 
 [node name="OverworldCharacter" type="Node2D" parent="Player"]
@@ -43,26 +43,26 @@ collision_mask = 4
 [node name="Shape" type="CollisionShape2D" parent="Player/InteractionArea"]
 shape = SubResource("player_shape")
 
-[node name="Exit_BG_03_01" type="Area2D" parent="."]
-position = Vector2(819, 1424)
+[node name="Exit_BG_14_01" type="Area2D" parent="."]
+position = Vector2(615, 240)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("exit_script")
-target_map_id = "BG_03_01"
-target_spawn_point = "from_dorm_slifer"
+target_map_id = "BG_14_01"
+target_spawn_point = "from_hot_spring"
 
-[node name="Shape" type="CollisionShape2D" parent="Exit_BG_03_01"]
-shape = SubResource("exit_shape_h")
+[node name="Shape" type="CollisionShape2D" parent="Exit_BG_14_01"]
+shape = SubResource("exit_shape_v")
 
-[node name="Label" type="Label" parent="Exit_BG_03_01"]
-offset_left = -75
-offset_top = -45
-offset_right = 75
-offset_bottom = 0
-text = "Slifer Dorm"
-horizontal_alignment = 1
+[node name="Label" type="Label" parent="Exit_BG_14_01"]
+offset_left = -250
+offset_top = -20
+offset_right = -25
+offset_bottom = 20
+text = "Beach"
+horizontal_alignment = 2
 add_theme_font_size_override/font_size = 14
 modulate = Color(1, 1, 0.6, 0.6)
 
-[node name="from_slifer" type="Marker2D" parent="."]
-position = Vector2(819, 1382)
+[node name="from_beach" type="Marker2D" parent="."]
+position = Vector2(580, 240)

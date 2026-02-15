@@ -69,12 +69,15 @@ func _update_island_texture() -> void:
 
 
 func _select_current_location() -> void:
+	if _location_ids.is_empty():
+		return
 	var loc_id: String = _location_ids[_current_index]
 	var loc_data: Dictionary = _map_data.get(loc_id, {})
 	var pos_data: Dictionary = _positions.get(loc_id, {})
 
-	# Move cursor
-	var target := Vector2(pos_data.get("x", 240), pos_data.get("y", 136))
+	# Move cursor — positions in JSON are in legacy 480x272 space, scale to viewport
+	var raw := Vector2(pos_data.get("x", 240), pos_data.get("y", 136))
+	var target := Vector2(raw.x * 1195.0 / 480.0, raw.y * 686.0 / 272.0)
 	var tween := create_tween()
 	tween.tween_property(cursor_sprite, "position", target, 0.1)
 
@@ -86,7 +89,7 @@ func _select_current_location() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if not _can_input:
+	if not _can_input or _location_ids.is_empty():
 		return
 
 	var loc_id: String = _location_ids[_current_index]
@@ -120,7 +123,8 @@ func _navigate_connections(connections: Array, direction: int) -> void:
 
 	for conn_id in connections:
 		var pos_data: Dictionary = _positions.get(conn_id, {})
-		var conn_pos := Vector2(pos_data.get("x", 240), pos_data.get("y", 136))
+		var raw := Vector2(pos_data.get("x", 240), pos_data.get("y", 136))
+		var conn_pos := Vector2(raw.x * 1195.0 / 480.0, raw.y * 686.0 / 272.0)
 		var delta := conn_pos - current_pos
 
 		var score: float

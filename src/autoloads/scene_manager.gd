@@ -81,7 +81,8 @@ func goto_location(map_id: String, spawn_point: String = "default") -> void:
 
 
 func goto_big_map() -> void:
-	GameManager.change_state(GameManager.State.BIG_MAP)
+	if is_transitioning:
+		return
 	await goto_scene("res://scenes/big_map/big_map.tscn")
 
 

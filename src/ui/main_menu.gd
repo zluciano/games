@@ -13,6 +13,8 @@ var _can_input: bool = false
 func _ready() -> void:
 	GameManager.change_state(GameManager.State.MAIN_MENU)
 	_build_menu()
+	# Defer cursor update so VBoxContainer has laid out its children
+	await get_tree().process_frame
 	_update_cursor()
 
 	# Fade in
@@ -36,7 +38,7 @@ func _build_menu() -> void:
 
 func _create_menu_item(text: String, _index: int) -> Control:
 	var container := Control.new()
-	container.custom_minimum_size = Vector2(200, 28)
+	container.custom_minimum_size = Vector2(500, 70)
 
 	# Background bar
 	var bar := ColorRect.new()
@@ -50,7 +52,7 @@ func _create_menu_item(text: String, _index: int) -> Control:
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.set_anchors_preset(Control.PRESET_FULL_RECT)
-	label.add_theme_font_size_override("font_size", 14)
+	label.add_theme_font_size_override("font_size", 35)
 	container.add_child(label)
 
 	return container
@@ -80,7 +82,7 @@ func _update_cursor() -> void:
 		return
 	var target := item_container.get_child(selected_index) as Control
 	var target_pos := target.global_position
-	cursor.global_position = Vector2(target_pos.x - 20, target_pos.y + 6)
+	cursor.global_position = Vector2(target_pos.x - 50, target_pos.y + 15)
 
 
 func _select_item() -> void:

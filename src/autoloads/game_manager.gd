@@ -1,11 +1,11 @@
 extends Node
 ## Master game state machine controlling the entire game flow.
 
-signal state_changed(old_state: String, new_state: String)
+signal state_changed(old_state: int, new_state: int)
 signal game_started
 signal game_loaded
 
-enum State { BOOT, TITLE, MAIN_MENU, BIG_MAP, LOCATION, DIALOG, SAVE_LOAD, OPTIONS }
+enum State { BOOT, TITLE, MAIN_MENU, BIG_MAP, LOCATION, DIALOG, SAVE_LOAD, OPTIONS, SHOP }
 
 var current_state: int = State.BOOT
 var previous_state: int = State.BOOT
@@ -26,6 +26,9 @@ func _init_game_data() -> void:
 		"characters_met": [],
 		"player_name": "Player",
 		"play_time_seconds": 0,
+		"dp": 3000,
+		"tournament_day": 92,
+		"owned_cards": [],
 	}
 
 

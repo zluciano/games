@@ -4,24 +4,24 @@
 [ext_resource type="Script" path="res://src/characters/player_controller.gd" id="player_script"]
 [ext_resource type="Script" path="res://src/characters/overworld_character.gd" id="char_script"]
 [ext_resource type="Script" path="res://src/maps/location_exit.gd" id="exit_script"]
-[ext_resource type="Texture2D" path="res://assets/tagforce/backgrounds/maps_rendered/bg_01_01_bg.png" id="bg_texture"]
+[ext_resource type="Texture2D" path="res://assets/tagforce/backgrounds/maps_rendered/bg_09_01_bg.png" id="bg_texture"]
 
 [sub_resource type="CircleShape2D" id="player_shape"]
 radius = 24.0
 
 [sub_resource type="RectangleShape2D" id="exit_shape_v"]
-size = Vector2(50, 1114)
+size = Vector2(50, 380)
 
 [sub_resource type="RectangleShape2D" id="exit_shape_h"]
-size = Vector2(1624, 50)
+size = Vector2(640, 50)
 
 [sub_resource type="RectangleShape2D" id="exit_shape_h_sm"]
-size = Vector2(541, 50)
+size = Vector2(213, 50)
 
-[node name="BG_01_01" type="Node2D"]
+[node name="BG_09_01" type="Node2D"]
 script = ExtResource("scene_script")
-map_id = "BG_01_01"
-display_name = "Academy Courtyard"
+map_id = "BG_09_01"
+display_name = "Forest Path"
 is_interior = false
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -29,7 +29,7 @@ centered = false
 texture = ExtResource("bg_texture")
 
 [node name="Player" type="Node2D" parent="." groups=["player"]]
-position = Vector2(812, 607)
+position = Vector2(320, 240)
 script = ExtResource("player_script")
 
 [node name="OverworldCharacter" type="Node2D" parent="Player"]
@@ -50,123 +50,144 @@ collision_mask = 4
 shape = SubResource("player_shape")
 
 [node name="Exit_BG_01_02" type="Area2D" parent="."]
-position = Vector2(25, 607)
+position = Vector2(615, 240)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("exit_script")
 target_map_id = "BG_01_02"
-target_spawn_point = "from_courtyard"
+target_spawn_point = "from_forest"
 
 [node name="Shape" type="CollisionShape2D" parent="Exit_BG_01_02"]
 shape = SubResource("exit_shape_v")
 
 [node name="Label" type="Label" parent="Exit_BG_01_02"]
-offset_left = 25
-offset_top = -20
-offset_right = 300
-offset_bottom = 20
-text = "Entrance"
-add_theme_font_size_override/font_size = 14
-modulate = Color(1, 1, 0.6, 0.6)
-
-[node name="Exit_BG_02_01" type="Area2D" parent="."]
-position = Vector2(812, 25)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("exit_script")
-target_map_id = "BG_02_01"
-target_spawn_point = "from_courtyard"
-
-[node name="Shape" type="CollisionShape2D" parent="Exit_BG_02_01"]
-shape = SubResource("exit_shape_h")
-
-[node name="Label" type="Label" parent="Exit_BG_02_01"]
-offset_left = -125
-offset_top = 25
-offset_right = 125
-offset_bottom = 65
-text = "Hallway 1F"
-horizontal_alignment = 1
-add_theme_font_size_override/font_size = 14
-modulate = Color(1, 1, 0.6, 0.6)
-
-[node name="Exit_BG_03_01" type="Area2D" parent="."]
-position = Vector2(1599, 607)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("exit_script")
-target_map_id = "BG_03_01"
-target_spawn_point = "from_courtyard"
-
-[node name="Shape" type="CollisionShape2D" parent="Exit_BG_03_01"]
-shape = SubResource("exit_shape_v")
-
-[node name="Label" type="Label" parent="Exit_BG_03_01"]
 offset_left = -250
 offset_top = -20
 offset_right = -25
 offset_bottom = 20
-text = "Slifer Dorm"
+text = "Entrance"
 horizontal_alignment = 2
 add_theme_font_size_override/font_size = 14
 modulate = Color(1, 1, 0.6, 0.6)
 
-[node name="Exit_BG_07_01" type="Area2D" parent="."]
-position = Vector2(406, 1196)
+[node name="Exit_BG_10_01" type="Area2D" parent="."]
+position = Vector2(25, 240)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("exit_script")
-target_map_id = "BG_07_01"
-target_spawn_point = "from_courtyard"
+target_map_id = "BG_10_01"
+target_spawn_point = "from_forest"
 
-[node name="Shape" type="CollisionShape2D" parent="Exit_BG_07_01"]
-shape = SubResource("exit_shape_h_sm")
+[node name="Shape" type="CollisionShape2D" parent="Exit_BG_10_01"]
+shape = SubResource("exit_shape_v")
 
-[node name="Label" type="Label" parent="Exit_BG_07_01"]
+[node name="Label" type="Label" parent="Exit_BG_10_01"]
+offset_left = 25
+offset_top = -20
+offset_right = 300
+offset_bottom = 20
+text = "Abandoned Dorm"
+add_theme_font_size_override/font_size = 14
+modulate = Color(1, 1, 0.6, 0.6)
+
+[node name="Exit_BG_11_01" type="Area2D" parent="."]
+position = Vector2(320, 25)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("exit_script")
+target_map_id = "BG_11_01"
+target_spawn_point = "from_forest"
+
+[node name="Shape" type="CollisionShape2D" parent="Exit_BG_11_01"]
+shape = SubResource("exit_shape_h")
+
+[node name="Label" type="Label" parent="Exit_BG_11_01"]
 offset_left = -125
-offset_top = -45
+offset_top = 25
 offset_right = 125
-offset_bottom = 0
-text = "Harbor"
+offset_bottom = 65
+text = "Volcano"
 horizontal_alignment = 1
 add_theme_font_size_override/font_size = 14
 modulate = Color(1, 1, 0.6, 0.6)
 
-[node name="Exit_BG_14_01" type="Area2D" parent="."]
-position = Vector2(1218, 1196)
+[node name="Exit_BG_16_01" type="Area2D" parent="."]
+position = Vector2(160, 25)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("exit_script")
-target_map_id = "BG_14_01"
-target_spawn_point = "from_courtyard"
+target_map_id = "BG_16_01"
+target_spawn_point = "from_forest"
 
-[node name="Shape" type="CollisionShape2D" parent="Exit_BG_14_01"]
+[node name="Shape" type="CollisionShape2D" parent="Exit_BG_16_01"]
 shape = SubResource("exit_shape_h_sm")
 
-[node name="Label" type="Label" parent="Exit_BG_14_01"]
+[node name="Label" type="Label" parent="Exit_BG_16_01"]
 offset_left = -125
-offset_top = -45
+offset_top = 25
 offset_right = 125
-offset_bottom = 0
-text = "Beach"
+offset_bottom = 65
+text = "Cliff"
 horizontal_alignment = 1
 add_theme_font_size_override/font_size = 14
 modulate = Color(1, 1, 0.6, 0.6)
 
-[node name="from_beach" type="Marker2D" parent="."]
-position = Vector2(1218, 1154)
+[node name="Exit_BG_19_01" type="Area2D" parent="."]
+position = Vector2(160, 462)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("exit_script")
+target_map_id = "BG_19_01"
+target_spawn_point = "from_forest"
+
+[node name="Shape" type="CollisionShape2D" parent="Exit_BG_19_01"]
+shape = SubResource("exit_shape_h_sm")
+
+[node name="Label" type="Label" parent="Exit_BG_19_01"]
+offset_left = -125
+offset_top = -45
+offset_right = 125
+offset_bottom = 0
+text = "Lake"
+horizontal_alignment = 1
+add_theme_font_size_override/font_size = 14
+modulate = Color(1, 1, 0.6, 0.6)
+
+[node name="Exit_BG_20_01" type="Area2D" parent="."]
+position = Vector2(320, 462)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("exit_script")
+target_map_id = "BG_20_01"
+target_spawn_point = "from_forest"
+
+[node name="Shape" type="CollisionShape2D" parent="Exit_BG_20_01"]
+shape = SubResource("exit_shape_h")
+
+[node name="Label" type="Label" parent="Exit_BG_20_01"]
+offset_left = -75
+offset_top = -45
+offset_right = 75
+offset_bottom = 0
+text = "Bridge"
+horizontal_alignment = 1
+add_theme_font_size_override/font_size = 14
+modulate = Color(1, 1, 0.6, 0.6)
+
+[node name="from_abandoned" type="Marker2D" parent="."]
+position = Vector2(60, 240)
 
 [node name="from_bridge" type="Marker2D" parent="."]
-position = Vector2(812, 607)
+position = Vector2(320, 420)
+
+[node name="from_cliff" type="Marker2D" parent="."]
+position = Vector2(160, 60)
 
 [node name="from_entrance" type="Marker2D" parent="."]
-position = Vector2(60, 607)
+position = Vector2(580, 240)
 
-[node name="from_hallway_1f" type="Marker2D" parent="."]
-position = Vector2(812, 60)
+[node name="from_lake" type="Marker2D" parent="."]
+position = Vector2(160, 420)
 
-[node name="from_harbor" type="Marker2D" parent="."]
-position = Vector2(406, 1154)
-
-[node name="from_slifer" type="Marker2D" parent="."]
-position = Vector2(1564, 607)
+[node name="from_volcano" type="Marker2D" parent="."]
+position = Vector2(320, 60)

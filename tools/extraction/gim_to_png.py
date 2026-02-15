@@ -68,6 +68,32 @@ def unswizzle_palette_index(idx):
     return idx
 
 
+def ps2_unswizzle_8bpp(swizzled, width, height):
+    """Unswizzle PS2 PSMT8 texture data using the GS VRAM layout formula.
+
+    PS2 stores 8-bit textures in GS VRAM by writing data as PSMCT32 (32-bit)
+    and reading back as PSMT8 (8-bit). This creates a specific byte permutation
+    within 16x16 pixel blocks organized into 128x64 pages.
+
+    Formula from PS2ImageTool's Pixel8Bpp().
+    """
+    size = width * height
+    if len(swizzled) < size:
+        return swizzled
+    out = bytearray(size)
+    for y in range(height):
+        for x in range(width):
+            block_location = (y & (-16)) * width + (x & (-16)) * 2
+            swap_selector = (((y + 2) >> 2) & 1) * 4
+            pos_y = (((y & (~3)) >> 1) + (y & 1)) & 7
+            column_location = pos_y * width * 2 + ((x + swap_selector) & 7) * 4
+            byte_num = ((y >> 1) & 1) + ((x >> 2) & 2)
+            src_idx = block_location + column_location + byte_num
+            if src_idx < size:
+                out[y * width + x] = swizzled[src_idx]
+    return bytes(out)
+
+
 def parse_block_header(data, offset):
     """Parse a 16-byte GIM block header."""
     if offset + 16 > len(data):
@@ -185,6 +211,50 @@ def decode_palette(data, psub):
             ))
 
     return colors
+
+
+def fix_ps2_page_interleaving(img, pixel_format):
+    """Fix PS2 GS VRAM page interleaving for 8-bit indexed textures.
+
+    PS2 PSMT8 textures store data with block-row interleaving within 64px pages.
+    Each page has 4 block rows of 16px each (A,B,C,D from top). In groups of 4 pages,
+    pages at positions 1 and 2 have their block rows permuted:
+      - Page 1: [D,C,A,B] = permutation [3,2,0,1]
+      - Page 2: [D,A,B,C] = permutation [3,0,1,2]
+
+    Verified by comparing block pixel density with unaffected pages (0 and 3) across
+    Judai, Sho, and sd_boy sprite sheets, and visual inspection at 5x zoom.
+    """
+    if pixel_format != 5:  # Only 8-bit indexed
+        return img
+
+    w, h = img.size
+    PAGE_HEIGHT = 64
+    BLOCK_HEIGHT = 16
+    num_pages = h // PAGE_HEIGHT
+
+    if num_pages < 2:
+        return img
+
+    # Per-page block row permutations within each 4-page group
+    GROUP_PERMS = {
+        1: [3, 2, 0, 1],  # DCAB
+        2: [3, 0, 1, 2],  # DABC
+    }
+
+    for group_start in range(0, num_pages, 4):
+        for page_in_group, perm in GROUP_PERMS.items():
+            page_idx = group_start + page_in_group
+            if page_idx >= num_pages:
+                break
+            y_start = page_idx * PAGE_HEIGHT
+            blocks = [img.crop((0, y_start + i * BLOCK_HEIGHT, w,
+                                y_start + (i + 1) * BLOCK_HEIGHT))
+                      for i in range(4)]
+            for i, bi in enumerate(perm):
+                img.paste(blocks[bi], (0, y_start + i * BLOCK_HEIGHT))
+
+    return img
 
 
 def decode_indexed(data, isub, palette):

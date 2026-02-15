@@ -1,0 +1,169 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/maps/location_scene.gd" id="scene_script"]
+[ext_resource type="Script" path="res://src/characters/player_controller.gd" id="player_script"]
+[ext_resource type="Script" path="res://src/characters/overworld_character.gd" id="char_script"]
+[ext_resource type="Script" path="res://src/maps/location_exit.gd" id="exit_script"]
+[ext_resource type="Texture2D" path="res://assets/tagforce/backgrounds/maps_rendered/bg_02_01_bg.png" id="bg_texture"]
+
+[sub_resource type="CircleShape2D" id="player_shape"]
+radius = 24.0
+
+[sub_resource type="RectangleShape2D" id="exit_shape_v"]
+size = Vector2(50, 447)
+
+[sub_resource type="RectangleShape2D" id="exit_shape_h"]
+size = Vector2(647, 50)
+
+[sub_resource type="RectangleShape2D" id="exit_shape_v_sm"]
+size = Vector2(50, 182)
+
+[node name="BG_02_01" type="Node2D"]
+script = ExtResource("scene_script")
+map_id = "BG_02_01"
+display_name = "Academy Hallway 1F"
+is_interior = true
+
+[node name="Background" type="Sprite2D" parent="."]
+centered = false
+texture = ExtResource("bg_texture")
+
+[node name="Player" type="Node2D" parent="." groups=["player"]]
+position = Vector2(323, 273)
+script = ExtResource("player_script")
+
+[node name="OverworldCharacter" type="Node2D" parent="Player"]
+script = ExtResource("char_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/OverworldCharacter"]
+
+[node name="AnimTimer" type="Timer" parent="Player/OverworldCharacter"]
+wait_time = 0.12
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="InteractionArea" type="Area2D" parent="Player"]
+collision_layer = 2
+collision_mask = 4
+
+[node name="Shape" type="CollisionShape2D" parent="Player/InteractionArea"]
+shape = SubResource("player_shape")
+
+[node name="Exit_BG_01_01" type="Area2D" parent="."]
+position = Vector2(323, 529)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("exit_script")
+target_map_id = "BG_01_01"
+target_spawn_point = "from_hallway_1f"
+
+[node name="Shape" type="CollisionShape2D" parent="Exit_BG_01_01"]
+shape = SubResource("exit_shape_h")
+
+[node name="Label" type="Label" parent="Exit_BG_01_01"]
+offset_left = -75
+offset_top = -45
+offset_right = 75
+offset_bottom = 0
+text = "Courtyard"
+horizontal_alignment = 1
+add_theme_font_size_override/font_size = 14
+modulate = Color(1, 1, 0.6, 0.6)
+
+[node name="Exit_BG_02_02" type="Area2D" parent="."]
+position = Vector2(323, 25)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("exit_script")
+target_map_id = "BG_02_02"
+target_spawn_point = "from_hallway_1f"
+
+[node name="Shape" type="CollisionShape2D" parent="Exit_BG_02_02"]
+shape = SubResource("exit_shape_h")
+
+[node name="Label" type="Label" parent="Exit_BG_02_02"]
+offset_left = -125
+offset_top = 25
+offset_right = 125
+offset_bottom = 65
+text = "Hallway 2F"
+horizontal_alignment = 1
+add_theme_font_size_override/font_size = 14
+modulate = Color(1, 1, 0.6, 0.6)
+
+[node name="Exit_BG_02_03" type="Area2D" parent="."]
+position = Vector2(25, 273)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("exit_script")
+target_map_id = "BG_02_03"
+target_spawn_point = "from_hallway_1f"
+
+[node name="Shape" type="CollisionShape2D" parent="Exit_BG_02_03"]
+shape = SubResource("exit_shape_v")
+
+[node name="Label" type="Label" parent="Exit_BG_02_03"]
+offset_left = 25
+offset_top = -20
+offset_right = 300
+offset_bottom = 20
+text = "Classroom"
+add_theme_font_size_override/font_size = 14
+modulate = Color(1, 1, 0.6, 0.6)
+
+[node name="Exit_BG_02_04" type="Area2D" parent="."]
+position = Vector2(622, 273)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("exit_script")
+target_map_id = "BG_02_04"
+target_spawn_point = "from_hallway_1f"
+
+[node name="Shape" type="CollisionShape2D" parent="Exit_BG_02_04"]
+shape = SubResource("exit_shape_v")
+
+[node name="Label" type="Label" parent="Exit_BG_02_04"]
+offset_left = -250
+offset_top = -20
+offset_right = -25
+offset_bottom = 20
+text = "Card Shop"
+horizontal_alignment = 2
+add_theme_font_size_override/font_size = 14
+modulate = Color(1, 1, 0.6, 0.6)
+
+[node name="Exit_BG_02_08" type="Area2D" parent="."]
+position = Vector2(622, 136)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("exit_script")
+target_map_id = "BG_02_08"
+target_spawn_point = "from_hallway_1f"
+
+[node name="Shape" type="CollisionShape2D" parent="Exit_BG_02_08"]
+shape = SubResource("exit_shape_v_sm")
+
+[node name="Label" type="Label" parent="Exit_BG_02_08"]
+offset_left = -250
+offset_top = -20
+offset_right = -25
+offset_bottom = 20
+text = "Duel Arena"
+horizontal_alignment = 2
+add_theme_font_size_override/font_size = 14
+modulate = Color(1, 1, 0.6, 0.6)
+
+[node name="from_arena" type="Marker2D" parent="."]
+position = Vector2(587, 136)
+
+[node name="from_card_shop" type="Marker2D" parent="."]
+position = Vector2(587, 273)
+
+[node name="from_classroom" type="Marker2D" parent="."]
+position = Vector2(60, 273)
+
+[node name="from_courtyard" type="Marker2D" parent="."]
+position = Vector2(323, 487)
+
+[node name="from_hallway_2f" type="Marker2D" parent="."]
+position = Vector2(323, 60)

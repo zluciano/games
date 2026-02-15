@@ -41,7 +41,10 @@ func load_game(slot: int) -> Dictionary:
 		push_error("Failed to parse save: %s" % path)
 		return {}
 
-	return json.data as Dictionary
+	if json.data is Dictionary:
+		return json.data
+	push_error("Save data is not a Dictionary: %s" % path)
+	return {}
 
 
 func has_save(slot: int) -> bool:

@@ -21,34 +21,34 @@ anchor_bottom = 1.0
 
 [node name="Portrait" type="Control" parent="Panel"]
 layout_mode = 0
-offset_left = 10
-offset_top = 20
-offset_right = 138
-offset_bottom = 220
+offset_left = 25
+offset_top = 50
+offset_right = 345
+offset_bottom = 550
 script = ExtResource("portrait_script")
 
 [node name="Body" type="TextureRect" parent="Panel/Portrait"]
 layout_mode = 0
-offset_right = 128
-offset_bottom = 200
+offset_right = 320
+offset_bottom = 500
 expand_mode = 1
 stretch_mode = 5
 
 [node name="Expression" type="TextureRect" parent="Panel/Portrait"]
 layout_mode = 0
-offset_left = 16
-offset_top = 40
-offset_right = 80
-offset_bottom = 72
+offset_left = 40
+offset_top = 100
+offset_right = 200
+offset_bottom = 180
 expand_mode = 1
 stretch_mode = 5
 
 [node name="Mouth" type="TextureRect" parent="Panel/Portrait"]
 layout_mode = 0
-offset_left = 16
-offset_top = 68
-offset_right = 80
-offset_bottom = 100
+offset_left = 40
+offset_top = 170
+offset_right = 200
+offset_bottom = 250
 expand_mode = 1
 stretch_mode = 5
 
@@ -57,37 +57,37 @@ wait_time = 0.08
 
 [node name="TextWindowBG" type="ColorRect" parent="Panel"]
 layout_mode = 0
-offset_left = 10
-offset_top = 196
-offset_right = 470
-offset_bottom = 268
+offset_left = 25
+offset_top = 490
+offset_right = 1170
+offset_bottom = 670
 color = Color(0.05, 0.15, 0.25, 0.9)
 
 [node name="NameLabel" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 20
-offset_top = 198
-offset_right = 200
-offset_bottom = 216
-add_theme_font_size_override/font_size = 11
+offset_left = 50
+offset_top = 495
+offset_right = 500
+offset_bottom = 540
+add_theme_font_size_override/font_size = 28
 add_theme_color_override/font_color = Color(0.9, 0.85, 0.3, 1)
 
 [node name="TextDisplay" type="RichTextLabel" parent="Panel"]
 layout_mode = 0
-offset_left = 20
-offset_top = 218
-offset_right = 460
-offset_bottom = 264
+offset_left = 50
+offset_top = 545
+offset_right = 1150
+offset_bottom = 660
 bbcode_enabled = true
 scroll_active = false
-add_theme_font_size_override/normal_font_size = 11
+add_theme_font_size_override/normal_font_size = 28
 script = ExtResource("text_script")
 
 [node name="ContinueIndicator" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 440
-offset_top = 252
-offset_right = 465
-offset_bottom = 268
+offset_left = 1100
+offset_top = 630
+offset_right = 1163
+offset_bottom = 670
 text = "▼"
-add_theme_font_size_override/font_size = 10
+add_theme_font_size_override/font_size = 25

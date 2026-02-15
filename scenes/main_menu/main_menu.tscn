@@ -22,28 +22,28 @@ modulate = Color(0.3, 0.3, 0.4, 1)
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
-offset_left = 140
-offset_top = 30
-offset_right = 340
-offset_bottom = 55
+offset_left = 350
+offset_top = 75
+offset_right = 850
+offset_bottom = 138
 text = "TAG FORCE EVOLUTION"
 horizontal_alignment = 1
-add_theme_font_size_override/font_size = 16
+add_theme_font_size_override/font_size = 40
 
 [node name="ItemContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 140
-offset_top = 90
-offset_right = 340
-offset_bottom = 200
-theme_override_constants/separation = 8
+offset_left = 350
+offset_top = 225
+offset_right = 850
+offset_bottom = 500
+theme_override_constants/separation = 20
 
 [node name="Cursor" type="Label" parent="."]
 layout_mode = 0
-offset_left = 120
-offset_top = 90
-offset_right = 138
-offset_bottom = 110
+offset_left = 300
+offset_top = 225
+offset_right = 345
+offset_bottom = 275
 text = "▶"
-add_theme_font_size_override/font_size = 14
+add_theme_font_size_override/font_size = 35
 add_theme_color_override/font_color = Color(1, 0.85, 0.2, 1)

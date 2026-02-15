@@ -20,7 +20,7 @@ func _load_registry() -> void:
 		return
 	var file := FileAccess.open(REGISTRY_PATH, FileAccess.READ)
 	var json := JSON.new()
-	if json.parse(file.get_as_text()) == OK:
+	if json.parse(file.get_as_text()) == OK and json.data is Dictionary:
 		characters = json.data
 	file.close()
 
@@ -30,7 +30,7 @@ func _load_schedules() -> void:
 		return
 	var file := FileAccess.open(SCHEDULES_PATH, FileAccess.READ)
 	var json := JSON.new()
-	if json.parse(file.get_as_text()) == OK:
+	if json.parse(file.get_as_text()) == OK and json.data is Dictionary:
 		schedules = json.data
 	file.close()
 

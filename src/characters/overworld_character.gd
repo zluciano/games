@@ -1,12 +1,21 @@
 extends Node2D
-## Overworld character using SLA spritesheet (512x256, 8 cols x 4 rows, 64x64 frames).
-## Row 0: walk down, Row 1: walk up, Row 2: walk left, Row 3: walk right
+## Overworld character sprite using region_rect for precise frame selection.
+## Sprite sheets are 512x256 with 3 rows x 10 columns.
+## Row 0: walk down, Row 1: walk up, Row 2: walk sideways (flip for left/right)
 
 @export var sprite_path: String = ""
 @export var character_id: String = ""
 @export var walk_speed: float = 60.0
 
 enum Direction { DOWN = 0, UP = 1, LEFT = 2, RIGHT = 3 }
+
+const SHADOW_COLOR := Color(0.0, 0.0, 0.0, 0.35)
+const SHADOW_RADIUS := Vector2(12.0, 6.0)
+
+const FRAME_W := 51
+const FRAME_H := 85
+const ROW_Y := [0, 85, 170]
+const FRAME_COUNT := 10
 
 var current_direction: int = Direction.DOWN
 var is_moving: bool = false
@@ -15,30 +24,40 @@ var is_moving: bool = false
 @onready var anim_timer: Timer = $AnimTimer
 
 var _frame: int = 0
-var _anim_frames := [0, 1, 2, 3, 4, 5, 6, 7]
 
 
 func _ready() -> void:
+	sprite.offset.y = -22
 	if not sprite_path.is_empty():
 		load_sprite(sprite_path)
 	anim_timer.timeout.connect(_advance_frame)
 
 
+func _draw() -> void:
+	var points := PackedVector2Array()
+	for i in range(16):
+		var angle := i * TAU / 16.0
+		points.append(Vector2(cos(angle) * SHADOW_RADIUS.x,
+							  sin(angle) * SHADOW_RADIUS.y))
+	draw_colored_polygon(points, SHADOW_COLOR)
+
+
 func load_sprite(path: String) -> void:
 	sprite_path = path
-	if ResourceLoader.exists(path):
-		var tex := load(path) as Texture2D
-		if tex:
-			sprite.texture = tex
-			sprite.hframes = 8
-			sprite.vframes = 4
-			sprite.frame = 0
+	if not ResourceLoader.exists(path):
+		return
+	var tex := load(path) as Texture2D
+	if not tex:
+		return
+	sprite.texture = tex
+	sprite.region_enabled = true
+	_update_frame()
 
 
 func walk(direction: int) -> void:
 	current_direction = direction
 	is_moving = true
-	sprite.frame = current_direction * 8 + _frame
+	_update_frame()
 	if anim_timer.is_stopped():
 		anim_timer.start()
 
@@ -48,7 +67,7 @@ func idle(direction: int = -1) -> void:
 		current_direction = direction
 	is_moving = false
 	_frame = 0
-	sprite.frame = current_direction * 8
+	_update_frame()
 	anim_timer.stop()
 
 
@@ -63,5 +82,26 @@ func face_towards(target_pos: Vector2) -> void:
 func _advance_frame() -> void:
 	if not is_moving:
 		return
-	_frame = (_frame + 1) % 8
-	sprite.frame = current_direction * 8 + _frame
+	_frame = (_frame + 1) % FRAME_COUNT
+	_update_frame()
+
+
+func _update_frame() -> void:
+	var row: int
+	match current_direction:
+		Direction.DOWN:
+			row = 0
+			sprite.flip_h = false
+		Direction.UP:
+			row = 1
+			sprite.flip_h = false
+		Direction.LEFT:
+			row = 2
+			sprite.flip_h = false
+		Direction.RIGHT:
+			row = 2
+			sprite.flip_h = true
+		_:
+			row = 0
+			sprite.flip_h = false
+	sprite.region_rect = Rect2(_frame * FRAME_W, ROW_Y[row], FRAME_W, FRAME_H)

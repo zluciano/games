@@ -71,7 +71,7 @@ func interact(player: Node2D) -> void:
 	if dialog_box:
 		dialog_box.start_dialog(dialog_lines)
 		await dialog_box.dialog_finished
-		player.set_movement_enabled(true)
+	player.set_movement_enabled(true)
 
 	# Resume patrol
 	if patrol_points.size() > 1:
