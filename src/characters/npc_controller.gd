@@ -2,9 +2,12 @@ extends Node2D
 ## NPC controller - idle/patrol behavior with dialog interaction.
 
 @export var character_id: String = ""
-@export var idle_direction: int = 0  # Direction enum: 0=S, 1=SW, 2=W, 3=NW, 4=N, 5=NE, 6=E, 7=SE
+@export var idle_direction: int = 0  # Legacy: 0=S, 1=N, 2=W, 3=E
 @export var patrol_points: Array[Vector2] = []
 @export var patrol_speed: float = 30.0
+
+# Convert legacy 4-dir (0=down,1=up,2=left,3=right) to 8-dir enum
+const LEGACY_DIR: Array[int] = [0, 4, 2, 6]  # S, N, W, E
 
 var dialog_lines: Array = []
 var _patrol_index: int = 0
@@ -17,12 +20,14 @@ var _is_patrolling: bool = false
 func _ready() -> void:
 	add_to_group("npcs")
 
-	# Load sprite
+	# Load both sprite sheets
 	var sla_path := CharacterDB.get_sla_path(character_id)
-	if not sla_path.is_empty():
-		character.load_sprite(sla_path)
+	var ver_path := CharacterDB.get_ver_path(character_id)
+	if not ver_path.is_empty() or not sla_path.is_empty():
+		character.load_sprites(ver_path, sla_path)
 
-	character.idle(idle_direction)
+	var dir8 := LEGACY_DIR[idle_direction] if idle_direction < LEGACY_DIR.size() else idle_direction
+	character.idle(dir8)
 
 	# Start patrol if points exist
 	if patrol_points.size() > 1:
@@ -47,9 +52,8 @@ func _physics_process(delta: float) -> void:
 	var direction := delta_pos.normalized()
 	position += direction * patrol_speed * delta
 
-	# Update sprite direction (8-way)
-	var dir: int = character._vector_to_direction(direction)
-	character.walk(dir)
+	# 8-way direction from movement vector
+	character.walk(character.vector_to_direction(direction))
 
 
 func interact(player: Node2D) -> void:

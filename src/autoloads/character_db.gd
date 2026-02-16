@@ -5,6 +5,7 @@ const REGISTRY_PATH := "res://data/characters/character_registry.json"
 const SCHEDULES_PATH := "res://data/characters/character_schedules.json"
 const BUSTUP_BASE := "res://assets/tagforce/characters/bustup/"
 const SLA_BASE := "res://assets/tagforce/characters/sprites_sla/"
+const VER_BASE := "res://assets/tagforce/characters/sprites_ver/"
 
 var characters: Dictionary = {}
 var schedules: Dictionary = {}
@@ -56,3 +57,10 @@ func get_sla_path(char_id: String) -> String:
 	if sprite.is_empty():
 		return ""
 	return SLA_BASE + sprite
+
+
+func get_ver_path(char_id: String) -> String:
+	var sla := get_sla_path(char_id)
+	if sla.is_empty():
+		return ""
+	return sla.replace("sprites_sla", "sprites_ver").replace("_sla.", "_ver.")

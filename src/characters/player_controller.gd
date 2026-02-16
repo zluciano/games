@@ -1,8 +1,9 @@
 extends Node2D
-## Player controller - input-driven movement using overworld character sprite.
+## Player controller - input-driven 8-direction movement using overworld character sprite.
 ## Camera2D child follows the player and shows a 640x480 window into the map.
 
-const DEFAULT_SPRITE := "res://assets/tagforce/characters/sprites_sla/sd_play_sla.png"
+const DEFAULT_VER := "res://assets/tagforce/characters/sprites_ver/sd_play_ver.png"
+const DEFAULT_SLA := "res://assets/tagforce/characters/sprites_sla/sd_play_sla.png"
 
 @export var speed: float = 180.0
 
@@ -16,7 +17,7 @@ var _map_bounds: Rect2 = Rect2(0, 0, 1440, 816)
 
 
 func _ready() -> void:
-	character.load_sprite(DEFAULT_SPRITE)
+	character.load_sprites(DEFAULT_VER, DEFAULT_SLA)
 	character.idle(character.Direction.S)
 
 	interaction_area.area_entered.connect(_on_npc_entered)
@@ -55,9 +56,8 @@ func _physics_process(delta: float) -> void:
 		input = input.normalized()
 		position += input * speed * delta
 
-		# Determine 8-way facing direction from raw input axes
-		var dir: int = character._vector_to_direction(input)
-		character.walk(dir)
+		# 8-way direction from raw input vector
+		character.walk(character.vector_to_direction(input))
 
 		# Clamp to map bounds (with margin for sprite)
 		var margin := 16.0
